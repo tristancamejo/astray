@@ -1,0 +1,25 @@
+{
+	"name": "@astray/test",
+	"version": "0.0.0",
+	"main": "./dist/index.js",
+	"source": "./src/index.ts",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"type-check": "tsc --noEmit",
+		"lint": "TIMING=1 eslint src/**/*.ts* --fix"
+	},
+	"devDependencies": {
+		"@types/node": "^18.11.17",
+		"eslint": "8.30.0",
+		"eslint-config-custom": "*",
+		"tsconfig": "*",
+		"tsup": "^6.5.0",
+		"typescript": "^4.9.4"
+	}
+}

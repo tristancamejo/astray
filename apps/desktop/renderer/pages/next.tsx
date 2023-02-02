@@ -1,9 +1,9 @@
-import React from 'react';
-import Head from 'next/head';
+import { styled } from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Head from 'next/head';
+import React from 'react';
 import Link from '../components/Link';
-import { styled } from '@mui/material';
 
 const Root = styled('div')(({ theme }) => {
 	return {
@@ -26,7 +26,7 @@ function Next() {
 					with Nextron
 				</Typography>
 				<Typography gutterBottom>
-					<Link href="/home">Go to the home page</Link>
+					<Link href="/index">Go to the home page</Link>
 				</Typography>
 				<Button variant="contained" color="primary">
 					Do nothing button

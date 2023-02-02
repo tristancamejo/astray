@@ -1,7 +1,14 @@
-import { app } from 'electron';
-import serve from 'electron-serve';
-import { createWindow } from './helpers';
+import 'reflect-metadata';
+import { container } from 'tsyringe';
 
+import { app, BrowserWindow } from 'electron';
+import serve from 'electron-serve';
+import { EventBus } from './events/bus/EventBus';
+import { createWindow } from './helpers';
+import { Library } from './radio/Library';
+import { Radio } from './radio/Radio';
+
+export let mainWindow: BrowserWindow;
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
 if (isProd) {
@@ -13,20 +20,28 @@ if (isProd) {
 (async () => {
 	await app.whenReady();
 
-	const mainWindow = createWindow('main', {
-		width: 1000,
-		height: 600,
+	container.register<EventBus>(EventBus, { useValue: new EventBus() });
+	await import('./events/hooks/_load');
+	container.register<Library>(Library, { useValue: new Library(container.resolve(EventBus)) });
+	container.register<Radio>(Radio, { useValue: new Radio(container.resolve(EventBus), container.resolve(Library)) });
+
+	mainWindow = createWindow('main', {
+		width: 1312,
+		height: 806,
+		resizable: false,
+		frame: false,
+		autoHideMenuBar: true,
+		webPreferences: {
+			nodeIntegration: true,
+		},
 	});
 
 	if (isProd) {
-		await mainWindow.loadURL('app://./home.html');
+		await mainWindow.loadURL('app://./index.html');
 	} else {
 		const port = process.argv[2];
-		await mainWindow.loadURL(`http://localhost:${port}/home`);
-		mainWindow.webContents.openDevTools();
+		await mainWindow.loadURL(`http://localhost:${port}/`);
 	}
-})();
 
-app.on('window-all-closed', () => {
-	app.quit();
-});
+	container.resolve(EventBus).emit('start');
+})();

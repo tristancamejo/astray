@@ -1,0 +1,20 @@
+{
+	"$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+	"appId": "pw.evie.astray",
+	"productName": "Astray",
+	"directories": {
+		"output": "build",
+		"buildResources": "resources"
+	},
+	"files": ["app/**/*"],
+	"electronVersion": "21.3.3",
+	"mac": {
+		"mergeASARs": false,
+		"target": [
+			{
+				"target": "mas",
+				"arch": ["universal"]
+			}
+		]
+	}
+}

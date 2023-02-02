@@ -1,6 +1,8 @@
 import { ipcMain as ipc } from 'electron';
 import { container } from 'tsyringe';
 import { mainWindow } from '../../background';
+import { Configuration } from '../../config/Config';
+import { Library } from '../../radio/Library';
 import { Radio } from '../../radio/Radio';
 import { EventBus } from '../bus/EventBus';
 
@@ -45,4 +47,18 @@ ipc.on('radio:next', () => {
 ipc.on('radio:play', (event, songId) => {
 	container.resolve(Radio).play(songId);
 	sendStateTick();
+});
+
+ipc.on('config:fetch', async (event) => {
+	const settings = await container.resolve(Configuration).getSettings();
+	event.returnValue = settings;
+});
+
+ipc.on('config:save', (event, settings) => {
+	container.resolve(Configuration).saveSettings(settings);
+});
+
+ipc.on('library:fetch', async (event) => {
+	const songs = Array.from(container.resolve(Library).songs.values());
+	event.returnValue = songs.map((song) => song.toClient());
 });

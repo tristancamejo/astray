@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import { app, BrowserWindow } from 'electron';
 import serve from 'electron-serve';
+import { Configuration } from './config/Config';
 import { EventBus } from './events/bus/EventBus';
 import { createWindow } from './helpers';
 import { Library } from './radio/Library';
@@ -21,6 +22,7 @@ if (isProd) {
 	await app.whenReady();
 
 	container.register<EventBus>(EventBus, { useValue: new EventBus() });
+	container.register<Configuration>(Configuration, { useValue: new Configuration(container.resolve(EventBus)) });
 	await import('./events/hooks/_load');
 	container.register<Library>(Library, { useValue: new Library(container.resolve(EventBus)) });
 	container.register<Radio>(Radio, { useValue: new Radio(container.resolve(EventBus), container.resolve(Library)) });

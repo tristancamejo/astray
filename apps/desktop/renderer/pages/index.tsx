@@ -1,5 +1,6 @@
 import { styled } from '@mui/material';
 import { ipcRenderer } from 'electron';
+import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { SongData } from '../../main/radio/Song';
 import { SongRow } from '../components/SongRow';
@@ -13,6 +14,7 @@ const Root = styled('div')(({ theme }) => {
 
 function Home() {
 	const [lib, setLib] = React.useState<SongData[]>([]);
+
 	useEffect(() => {
 		const handler = (_, songs: SongData[]) => {
 			setLib(songs);
@@ -24,9 +26,16 @@ function Home() {
 			ipcRenderer.removeListener('library:update', handler);
 		};
 	}, []);
+
+	useEffect(() => {
+		const songs = ipcRenderer.sendSync('library:fetch');
+		setLib(songs);
+	}, []);
+
 	return (
 		<React.Fragment>
 			<Root>
+				<Link href="/settings">Settings</Link>
 				<div>
 					{lib.map((song, index) => {
 						return <SongRow song={song} index={index} key={index} />;

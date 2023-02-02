@@ -37,6 +37,8 @@ export class Library {
 		const parsed = await LibrarySchema.parseAsync(JSON.parse(data));
 
 		this.songs = new Map(Object.entries(parsed.songs).map(([key, value]) => [key, new Song(value, key)]));
+
+		this.bus.emit('library:update', Array.from(this.songs.values()));
 	}
 
 	private async addSong(song: Song) {

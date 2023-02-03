@@ -73,25 +73,27 @@ export const ActionDock: React.FC = () => {
 				</div>
 			</div>
 			<div className={styles.actionDock__controls}>
-				<div className={styles.actionDock__controls__progress} onClick={handleSeek}>
+				<div className={styles.actionDock__controls__progress}>
 					<span className={styles.actionDock__controls__progress__time__left}>
 						{new Date(radioState.progress * 1000).toISOString().substr(14, 5)}
 					</span>
 
-					<div
-						className={styles.actionDock__controls__progress__bar}
-						style={{
-							width: `${(radioState.progress / radioState.duration) * 100}%`,
-							transition: 'width 0.05s ease-in-out',
-						}}
-					></div>
-					<div
-						className={styles.actionDock__controls__progress__background}
-						style={{
-							width: `${100 - (radioState.progress / radioState.duration) * 100}%`,
-							transition: 'width 0.05s ease-in-out',
-						}}
-					></div>
+					<div className={styles.actionDock__controls__progress} onClick={handleSeek}>
+						<div
+							className={styles.actionDock__controls__progress__bar}
+							style={{
+								width: `${(radioState.progress / radioState.duration) * 100}%`,
+								transition: 'width 0.05s ease-in-out',
+							}}
+						></div>
+						<div
+							className={styles.actionDock__controls__progress__background}
+							style={{
+								width: `${100 - (radioState.progress / radioState.duration) * 100}%`,
+								transition: 'width 0.05s ease-in-out',
+							}}
+						></div>
+					</div>
 
 					<span className={styles.actionDock__controls__progress__time__right}>
 						{new Date(radioState.duration * 1000).toISOString().substr(14, 5)}

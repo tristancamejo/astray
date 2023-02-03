@@ -16,5 +16,9 @@
 				"arch": ["universal"]
 			}
 		]
+	},
+	"linux": {
+		"executableName": "astray",
+		"artifactName": "${productName}-${version}.${ext}"
 	}
 }

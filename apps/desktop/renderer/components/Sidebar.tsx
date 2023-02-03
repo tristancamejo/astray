@@ -1,4 +1,4 @@
-import { CogIcon, MusicNoteIcon } from '@heroicons/react/outline';
+import { CogIcon, MusicalNoteIcon } from '@heroicons/react/24/solid';
 import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { useRouter } from 'next/router';
 
@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
 					<ListItem disablePadding>
 						<ListItemButton onClick={() => router.push('/')}>
 							<ListItemIcon>
-								<MusicNoteIcon />
+								<MusicalNoteIcon />
 							</ListItemIcon>
 							<ListItemText primary="Library" />
 						</ListItemButton>

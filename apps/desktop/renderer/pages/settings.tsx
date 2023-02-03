@@ -1,4 +1,4 @@
-import { FolderOpenIcon, TrashIcon } from '@heroicons/react/outline';
+import { FolderOpenIcon, TrashIcon } from '@heroicons/react/24/solid';
 import * as Mui from '@mui/material';
 import { ipcRenderer } from 'electron';
 import React, { useEffect } from 'react';

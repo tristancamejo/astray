@@ -1,4 +1,4 @@
-import { ChevronDownIcon, XIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { Tooltip } from '@mui/material';
 import electron from 'electron';
 import styles from './WindowFrame.module.scss';
@@ -15,7 +15,7 @@ function WindowFrame() {
 				>
 					<Tooltip title="Close" arrow>
 						<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<XIcon className="text-white" />
+							<XMarkIcon className="text-white" />
 						</svg>
 					</Tooltip>
 				</a>

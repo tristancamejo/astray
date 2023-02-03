@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon, PauseIcon, PlayIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon, ArrowRightIcon, PauseIcon, PlayIcon } from '@heroicons/react/24/solid';
 import { ipcRenderer } from 'electron';
 import { useEffect, useState } from 'react';
 import type { RadioState } from '../../main/radio/Radio';

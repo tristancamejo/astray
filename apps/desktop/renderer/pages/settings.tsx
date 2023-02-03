@@ -79,7 +79,7 @@ function Home() {
 						autoFocus
 						margin="dense"
 						id="name"
-						label="URL"
+						label="Path"
 						type="text"
 						value={newSourcePath}
 						onChange={(e) => {

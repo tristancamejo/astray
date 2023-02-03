@@ -4,10 +4,11 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ActionDock } from '../components/ActionDock';
-import WindowFrame from '../components/WindowFrame';
+import WindowFrame from '../components/WindowFrame'; // This is the top of the window (the title bar)
 import createEmotionCache from '../lib/create-emotion-cache';
 import theme from '../lib/theme';
 import '../styles/globals.css';
+import styles from './App.module.scss';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -25,12 +26,14 @@ export default function MyApp(props: MyAppProps) {
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<div className="flex flex-col h-screen w-screen">
-					<WindowFrame />
-					<main className="flex-1 pb-20">
+				<div className={styles.app}>
+					<div className={styles.app__windowFrame}>
+						<WindowFrame />
+					</div>
+					<div className={styles.app__content}>
 						<Component {...pageProps} />
-					</main>
-					<div className="flex-1 max-h-16">
+					</div>
+					<div className={styles.app__actionDock}>
 						<ActionDock />
 					</div>
 				</div>

@@ -1,11 +1,10 @@
-import { ipcMain as ipc } from 'electron';
+import { dialog, ipcMain as ipc } from 'electron';
 import { container } from 'tsyringe';
 import { mainWindow } from '../../background';
 import { Configuration } from '../../config/Config';
 import { Library } from '../../radio/Library';
 import { Radio } from '../../radio/Radio';
 import { EventBus } from '../bus/EventBus';
-
 container.resolve(EventBus).on('radio:play', (song) => {
 	mainWindow.webContents.send('radio:play', song);
 });
@@ -61,4 +60,11 @@ ipc.on('config:save', (event, settings) => {
 ipc.on('library:fetch', async (event) => {
 	const songs = Array.from(container.resolve(Library).songs.values());
 	event.returnValue = songs.map((song) => song.toClient());
+});
+
+ipc.on('folder:select', async (event) => {
+	const result = await dialog.showOpenDialog({
+		properties: ['openDirectory'],
+	});
+	event.returnValue = result.filePaths[0] || '';
 });

@@ -60,62 +60,60 @@ export const ActionDock: React.FC = () => {
 	}
 
 	return (
-		<div className={styles.lockedToBottom}>
-			<div className={styles.actionDock}>
-				<div className={styles.actionDock__songInfo}>
-					<img
-						src="https://static.thenounproject.com/png/770826-200.png"
-						alt="Song Cover"
-						className={styles.actionDock__songInfo__cover}
-					/>
-					<div className={styles.actionDock__songInfo__text}>
-						<p className={styles.actionDock__songInfo__text__title}>{radioState.song.title}</p>
-						<p className={styles.actionDock__songInfo__text__artist}>{radioState.song.artist}</p>
-					</div>
+		<div className={styles.actionDock}>
+			<div className={styles.actionDock__songInfo}>
+				<img
+					src="https://static.thenounproject.com/png/770826-200.png"
+					alt="Song Cover"
+					className={styles.actionDock__songInfo__cover}
+				/>
+				<div className={styles.actionDock__songInfo__text}>
+					<p className={styles.actionDock__songInfo__text__title}>{radioState.song.title}</p>
+					<p className={styles.actionDock__songInfo__text__artist}>{radioState.song.artist}</p>
 				</div>
-				<div className={styles.actionDock__controls}>
-					<div className={styles.actionDock__controls__progress} onClick={handleSeek}>
-						<span className={styles.actionDock__controls__progress__time__left}>
-							{new Date(radioState.progress * 1000).toISOString().substr(14, 5)}
-						</span>
-
-						<div
-							className={styles.actionDock__controls__progress__bar}
-							style={{
-								width: `${(radioState.progress / radioState.duration) * 100}%`,
-								transition: 'width 0.05s ease-in-out',
-							}}
-						></div>
-						<div
-							className={styles.actionDock__controls__progress__background}
-							style={{
-								width: `${100 - (radioState.progress / radioState.duration) * 100}%`,
-								transition: 'width 0.05s ease-in-out',
-							}}
-						></div>
-
-						<span className={styles.actionDock__controls__progress__time__right}>
-							{new Date(radioState.duration * 1000).toISOString().substr(14, 5)}
-						</span>
-					</div>
-					<div className={styles.actionDock__controls__buttons}>
-						<button className={styles.actionDock__controls__buttons__button} onClick={handlePrev}>
-							<ArrowLeftIcon className={styles.actionDock__controls__buttons__button__icon} />
-						</button>
-						<button className={styles.actionDock__controls__buttons__button} onClick={handlePlayPause}>
-							{radioState.isPlaying ? (
-								<PauseIcon className={styles.actionDock__controls__buttons__button__icon} />
-							) : (
-								<PlayIcon className={styles.actionDock__controls__buttons__button__icon} />
-							)}
-						</button>
-						<button className={styles.actionDock__controls__buttons__button} onClick={handleNext}>
-							<ArrowRightIcon className={styles.actionDock__controls__buttons__button__icon} />
-						</button>
-					</div>
-				</div>
-				<div className={styles.actionDock__volume}>{/* todo */}</div>
 			</div>
+			<div className={styles.actionDock__controls}>
+				<div className={styles.actionDock__controls__progress} onClick={handleSeek}>
+					<span className={styles.actionDock__controls__progress__time__left}>
+						{new Date(radioState.progress * 1000).toISOString().substr(14, 5)}
+					</span>
+
+					<div
+						className={styles.actionDock__controls__progress__bar}
+						style={{
+							width: `${(radioState.progress / radioState.duration) * 100}%`,
+							transition: 'width 0.05s ease-in-out',
+						}}
+					></div>
+					<div
+						className={styles.actionDock__controls__progress__background}
+						style={{
+							width: `${100 - (radioState.progress / radioState.duration) * 100}%`,
+							transition: 'width 0.05s ease-in-out',
+						}}
+					></div>
+
+					<span className={styles.actionDock__controls__progress__time__right}>
+						{new Date(radioState.duration * 1000).toISOString().substr(14, 5)}
+					</span>
+				</div>
+				<div className={styles.actionDock__controls__buttons}>
+					<button className={styles.actionDock__controls__buttons__button} onClick={handlePrev}>
+						<ArrowLeftIcon className={styles.actionDock__controls__buttons__button__icon} />
+					</button>
+					<button className={styles.actionDock__controls__buttons__button} onClick={handlePlayPause}>
+						{radioState.isPlaying ? (
+							<PauseIcon className={styles.actionDock__controls__buttons__button__icon} />
+						) : (
+							<PlayIcon className={styles.actionDock__controls__buttons__button__icon} />
+						)}
+					</button>
+					<button className={styles.actionDock__controls__buttons__button} onClick={handleNext}>
+						<ArrowRightIcon className={styles.actionDock__controls__buttons__button__icon} />
+					</button>
+				</div>
+			</div>
+			<div className={styles.actionDock__volume}>{/* todo */}</div>
 		</div>
 	);
 };

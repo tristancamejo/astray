@@ -3,7 +3,6 @@ import { ipcRenderer } from 'electron';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { SongData } from '../../main/radio/Song';
-import { SongRow } from '../components/SongRow';
 
 const Root = styled('div')(({ theme }) => {
 	return {
@@ -36,11 +35,11 @@ function Home() {
 		<React.Fragment>
 			<Root>
 				<Link href="/settings">Settings</Link>
-				<div>
+				{/* <div>
 					{lib.map((song, index) => {
 						return <SongRow song={song} index={index} key={index} />;
 					})}
-				</div>
+				</div> */}
 			</Root>
 		</React.Fragment>
 	);

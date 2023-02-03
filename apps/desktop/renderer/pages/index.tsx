@@ -1,15 +1,7 @@
-import { styled } from '@mui/material';
 import { ipcRenderer } from 'electron';
-import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { SongData } from '../../main/radio/Song';
-
-const Root = styled('div')(({ theme }) => {
-	return {
-		textAlign: 'center',
-		paddingTop: theme.spacing(4),
-	};
-});
+import { SongRow } from '../components/SongRow';
 
 function Home() {
 	const [lib, setLib] = React.useState<SongData[]>([]);
@@ -33,14 +25,11 @@ function Home() {
 
 	return (
 		<React.Fragment>
-			<Root>
-				<Link href="/settings">Settings</Link>
-				{/* <div>
-					{lib.map((song, index) => {
-						return <SongRow song={song} index={index} key={index} />;
-					})}
-				</div> */}
-			</Root>
+			<div>
+				{lib.map((song, index) => {
+					return <SongRow song={song} index={index} key={index} />;
+				})}
+			</div>
 		</React.Fragment>
 	);
 }

@@ -5,7 +5,7 @@ import styles from './WindowFrame.module.scss';
 
 function WindowFrame() {
 	return (
-		<div className={`${styles.drag} w-full h-7 bg-gray-800 ${styles.pinScreen}`}>
+		<div className={`${styles.drag} w-full h-full bg-[#252628] flex justify-between items-center`}>
 			<div className="flex justify-start items-center pl-1">
 				<a
 					className={`${styles['no-drag']} hover:opacity-50`}

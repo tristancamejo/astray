@@ -1,34 +1,73 @@
+$sidebarWidth: 15rem;
+$windowFrameHeight: 1.7rem;
+
 .app {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	width: 100vw;
-	background-color: #1e1e1e;
-}
-
-.app__windowFrame {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-}
-
-.app__content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
+}
+
+.app__windowFrame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: $windowFrameHeight;
+	width: 100%;
+}
+
+.app__container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.app__sidebar {
+	position: absolute;
+	top: $windowFrameHeight;
+	left: 0;
+	height: calc(100% - $windowFrameHeight);
+	width: $sidebarWidth;
+	overflow: hidden;
+}
+
+.app__content {
+	position: absolute;
+	top: $windowFrameHeight;
+	left: $sidebarWidth;
+	height: calc(100% - $windowFrameHeight);
+	width: calc(100% - $sidebarWidth);
+	overflow: auto;
 }
 
 .app__actionDock {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 5rem;
 	width: 100%;
+}
+
+.app__content::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+.app__content::-webkit-scrollbar-track {
+	background: #2e2e2e;
+}
+
+.app__content::-webkit-scrollbar-thumb {
+	background: #1e1e1e;
+	border-radius: 1rem;
+}
+
+.app__content::-webkit-scrollbar-thumb:hover {
+	background: #1e1e1e;
 }

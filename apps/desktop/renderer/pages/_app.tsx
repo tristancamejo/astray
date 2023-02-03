@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ActionDock } from '../components/ActionDock';
+import Sidebar from '../components/Sidebar';
 import WindowFrame from '../components/WindowFrame'; // This is the top of the window (the title bar)
 import createEmotionCache from '../lib/create-emotion-cache';
 import theme from '../lib/theme';
@@ -30,8 +31,13 @@ export default function MyApp(props: MyAppProps) {
 					<div className={styles.app__windowFrame}>
 						<WindowFrame />
 					</div>
-					<div className={styles.app__content}>
-						<Component {...pageProps} />
+					<div className={styles.app__container}>
+						<div className={styles.app__sidebar}>
+							<Sidebar />
+						</div>
+						<div className={styles.app__content}>
+							<Component {...pageProps} />
+						</div>
 					</div>
 					<div className={styles.app__actionDock}>
 						<ActionDock />

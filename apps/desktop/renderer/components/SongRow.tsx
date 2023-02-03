@@ -18,7 +18,12 @@ export const SongRow: React.FC<SongRowProps> = ({ song, index }) => {
 			<div className={styles.songRow__title}>{song.title}</div>
 			<div className={styles.songRow__artist}>{song.artist}</div>
 			<div className={styles.songRow__album}>{song.album}</div>
-			<div className={styles.songRow__duration}>{song.duration}</div>
+			<div className={styles.songRow__duration}>
+				{Intl.DateTimeFormat('en-US', {
+					minute: 'numeric',
+					second: 'numeric',
+				}).format(new Date(song.duration * 1000))}
+			</div>
 		</div>
 	);
 };

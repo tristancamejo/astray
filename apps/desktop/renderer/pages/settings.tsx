@@ -29,6 +29,10 @@ function Home() {
 		setNewSourcePath(path);
 	};
 
+	const handleRefreshSources = () => {
+		ipcRenderer.send('config:sources:refresh');
+	};
+
 	while (settings === null) {
 		return <div>Loading...</div>;
 	}
@@ -40,7 +44,7 @@ function Home() {
 			<Mui.List>
 				{settings.sources.map((source, index) => {
 					return (
-						<Mui.ListItem key={index}>
+						<Mui.ListItem key={index} divider={true}>
 							<Mui.ListItemText primary={source} />
 							<Mui.ListItemSecondaryAction>
 								<Mui.IconButton
@@ -63,14 +67,17 @@ function Home() {
 					);
 				})}
 			</Mui.List>
-			<Mui.Button
-				variant="contained"
-				onClick={() => {
-					setAddingSource(true);
-				}}
-			>
-				Add Source
-			</Mui.Button>
+			<Mui.Typography variant="h4">Actions</Mui.Typography>
+			<Mui.ButtonGroup variant="contained" aria-label="outlined primary button group">
+				<Mui.Button
+					onClick={() => {
+						setAddingSource(true);
+					}}
+				>
+					Add Source
+				</Mui.Button>
+				<Mui.Button onClick={handleRefreshSources}>Refresh Sources</Mui.Button>
+			</Mui.ButtonGroup>
 			<Mui.Dialog open={addingSource}>
 				<Mui.DialogTitle>Add Source</Mui.DialogTitle>
 				<Mui.DialogContent>

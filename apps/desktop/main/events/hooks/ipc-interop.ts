@@ -5,6 +5,7 @@ import { Configuration } from '../../config/Config';
 import { Library } from '../../radio/Library';
 import { Radio } from '../../radio/Radio';
 import { EventBus } from '../bus/EventBus';
+
 container.resolve(EventBus).on('radio:play', (song) => {
 	mainWindow.webContents.send('radio:play', song);
 });

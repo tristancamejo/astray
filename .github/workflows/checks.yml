@@ -40,7 +40,7 @@ jobs:
       - name: setup toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install gcc-arm-linux-gnueabihf -y
+          sudo apt-get install gcc-arm-linux-gnueabihf libasound2-dev -y
         shell: bash
 
       - name: node

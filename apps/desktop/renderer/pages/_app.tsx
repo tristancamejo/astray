@@ -27,7 +27,7 @@ export default function MyApp(props: MyAppProps) {
 				<CssBaseline />
 				<div className="flex flex-col h-screen w-screen">
 					<WindowFrame />
-					<main className="flex-1">
+					<main className="flex-1 pb-20">
 						<Component {...pageProps} />
 					</main>
 					<div className="flex-1 max-h-16">

@@ -19,7 +19,10 @@ export class Configuration {
 		let config = DefaultConfig as unknown;
 		try {
 			const savedConfig = await fs.promises.readFile(path.join(ASTRAY_FOLDER, 'config.json'), 'utf-8');
-			config = JSON.parse(savedConfig);
+			config = {
+				...DefaultConfig,
+				...JSON.parse(savedConfig),
+			};
 		} catch (e) {
 			console.log('No config file found, using defaults');
 		}

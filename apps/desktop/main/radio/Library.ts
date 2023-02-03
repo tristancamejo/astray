@@ -50,7 +50,7 @@ export class Library {
 	public async parseSong(path: string) {
 		const tags = read(path);
 		const duration = await this.getDuration(path);
-		const id = this.generateId();
+		const id = path;
 		const song = new Song(
 			{
 				title: tags.title || path.split('/').pop(),
@@ -82,11 +82,5 @@ export class Library {
 				}
 			}
 		}
-	}
-
-	private generateId() {
-		const future = Math.random().toString(36).slice(2);
-		if (this.songs.has(future)) return this.generateId();
-		return future;
 	}
 }

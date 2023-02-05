@@ -31,6 +31,8 @@ jobs:
             ~/.cargo/git/db/
             ./packages/fentio/.cargo-cache
             ./packages/fentio/target
+            ./packages/ktm/.cargo-cache
+            ./packages/ktm/target
           key: cargo
 
       - uses: goto-bus-stop/setup-zig@v2

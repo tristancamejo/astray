@@ -34,6 +34,9 @@ export class Radio {
 				case 'previous':
 					this.seek(0);
 					break;
+				case 'toggle':
+					this.togglePlayPause();
+					break;
 			}
 
 			this.bus.emit('radio:tick', this.getState());

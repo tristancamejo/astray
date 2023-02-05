@@ -22,4 +22,4 @@ contributing to this project is fun and easy (no secrets, woo)
 5. code
 6. pr
 
-note modifying native modules require restarting the electron app.
+note modifying native modules require restarting the electron app. (hmr doesn't count1!1)

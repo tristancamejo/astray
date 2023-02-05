@@ -1,8 +1,8 @@
 import { play, stop } from 'fentio';
+import { MediaControl } from 'ktm';
 import { EventBus } from '../events/bus/EventBus';
 import { Library } from './Library';
 import { Song } from './Song';
-
 export interface RadioState {
 	song?: Song;
 	nextSongs: Song[];
@@ -12,13 +12,34 @@ export interface RadioState {
 }
 
 export class Radio {
-	public constructor(private bus: EventBus, private library: Library) {}
-
 	private playingSong?: Song;
 	private nextSongs: Song[] = [];
 	private progress = 0;
 	private sinkId?: string;
 	private ticker?: NodeJS.Timeout;
+	private mediaControl = new MediaControl();
+
+	public constructor(private bus: EventBus, private library: Library) {
+		this.mediaControl.attach((e) => {
+			switch (e) {
+				case 'play':
+					this.resume();
+					break;
+				case 'pause':
+					this.pause();
+					break;
+				case 'next':
+					this.next();
+					break;
+				case 'previous':
+					this.seek(0);
+					break;
+			}
+
+			this.bus.emit('radio:tick', this.getState());
+			this.updateNativeMediaControl();
+		});
+	}
 
 	public getState(): RadioState {
 		return {
@@ -45,6 +66,16 @@ export class Radio {
 		this.fixTicker();
 	}
 
+	private updateNativeMediaControl() {
+		this.mediaControl.setMetadata({
+			album: this.playingSong?.album,
+			artist: this.playingSong?.artist,
+			duration: this.playingSong?.duration,
+			title: this.playingSong?.title,
+		});
+		this.mediaControl.setState(!!this.sinkId ? 'playing' : 'paused', this.progress);
+	}
+
 	private fixTicker() {
 		if (this.ticker) {
 			clearInterval(this.ticker);
@@ -63,6 +94,7 @@ export class Radio {
 
 			this.progress++;
 			this.bus.emit('radio:tick', this.getState());
+			this.updateNativeMediaControl();
 		}, 1000);
 	}
 

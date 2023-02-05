@@ -54,6 +54,7 @@ __metadata:
     electron-store: ^8.1.0
     fentio: "workspace:^"
     get-audio-duration: ^3.1.1
+    ktm: "workspace:^"
     next: ^13.1.6
     nextron: ^8.5.0
     node-id3: ^0.2.5
@@ -2016,7 +2017,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@napi-rs/cli@npm:^2.14.6":
+"@napi-rs/cli@npm:^2.13.3, @napi-rs/cli@npm:^2.14.6":
   version: 2.14.6
   resolution: "@napi-rs/cli@npm:2.14.6"
   bin:
@@ -6108,6 +6109,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ktm@workspace:^, ktm@workspace:packages/ktm":
+  version: 0.0.0-use.local
+  resolution: "ktm@workspace:packages/ktm"
+  dependencies:
+    "@napi-rs/cli": ^2.13.3
+  languageName: unknown
+  linkType: soft
+
 "language-subtag-registry@npm:~0.3.2":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -8506,11 +8515,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
   version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=ad5954"
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8f6260acc86b56bfdda6004bc53f32ea548f543e8baef7071c8e34d29d292f3e375c8416556c8de10b24deef6933cd1c16a8233dc84a3dd43a13a13265d0faab
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 

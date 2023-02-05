@@ -9,6 +9,7 @@ import WindowFrame from '../components/WindowFrame'; // This is the top of the w
 import createEmotionCache from '../lib/create-emotion-cache';
 import theme from '../lib/theme';
 import '../styles/globals.css';
+import '../styles/scroll-bar.scss';
 import styles from './App.module.scss';
 
 const clientSideEmotionCache = createEmotionCache();

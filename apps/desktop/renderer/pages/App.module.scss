@@ -45,7 +45,9 @@ $windowFrameHeight: 1.7rem;
 	left: $sidebarWidth;
 	height: calc(100% - $windowFrameHeight);
 	width: calc(100% - $sidebarWidth);
-	overflow: auto;
+	overflow: scroll;
+	padding-top: 1rem;
+	padding-bottom: 5rem;
 }
 
 .app__actionDock {
@@ -54,21 +56,4 @@ $windowFrameHeight: 1.7rem;
 	left: 0;
 	height: 5rem;
 	width: 100%;
-}
-
-.app__content::-webkit-scrollbar {
-	width: 0.5rem;
-}
-
-.app__content::-webkit-scrollbar-track {
-	background: #2e2e2e;
-}
-
-.app__content::-webkit-scrollbar-thumb {
-	background: #1e1e1e;
-	border-radius: 1rem;
-}
-
-.app__content::-webkit-scrollbar-thumb:hover {
-	background: #1e1e1e;
 }

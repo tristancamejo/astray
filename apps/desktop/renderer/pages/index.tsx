@@ -31,7 +31,7 @@ function Home() {
 		});
 
 		setSearchResults(results);
-	});
+	}, [search, lib]);
 
 	const handleClick = (song: SongData) => {
 		ipcRenderer.send('radio:play', song.id);

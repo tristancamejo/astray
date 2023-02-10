@@ -2,9 +2,9 @@
 
 open-source music player that astrays from the rest.
 
-## project status
+## philosophy
 
-my favourite side project. (it is incomplete)
+Astray was born out of the frustration of not being able to synchronize music between devices seamlessly. As a music player, its goal is to provide a simple, intuitive, and efficient solution to managing your music library across multiple devices. Whether you're at the gym, in the car, or at home, Astray makes it easy to access your favorite tracks, playlists, and podcasts without skipping a beat. With Astray, you'll never have to worry about manually transferring files or losing your music library again.
 
 ## plans
 

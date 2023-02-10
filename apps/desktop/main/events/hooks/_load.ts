@@ -1,4 +1,3 @@
-import './config-relays';
-import './ipc-interop';
-import './ipc-menu-bar';
+import './config';
+import './ipc-interop/_load';
 import './window-setup';

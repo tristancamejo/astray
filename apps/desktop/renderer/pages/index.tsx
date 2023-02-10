@@ -37,9 +37,6 @@ function Home() {
 		ipcRenderer.send('radio:play', song.id);
 	};
 
-	// using material ui create a beautiful ui inspired by spotify
-	// and make it look like a music player
-	// we need to make a box to contain the list of songs so they don't overflow, add a scrollbar
 	return (
 		<Mui.Container>
 			<Mui.TextField label="Search" value={search} onChange={(e) => setSearch(e.target.value)} />

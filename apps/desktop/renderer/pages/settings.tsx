@@ -4,7 +4,7 @@ import { ipcRenderer } from 'electron';
 import React, { useEffect } from 'react';
 import type { ConfigSpec } from '../../main/config/_spec';
 
-function Home() {
+function Settings() {
 	const [settings, setSettings] = React.useState<ConfigSpec | null>(null);
 	const [addingSource, setAddingSource] = React.useState(false);
 	const [newSourcePath, setNewSourcePath] = React.useState('');
@@ -133,4 +133,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default Settings;

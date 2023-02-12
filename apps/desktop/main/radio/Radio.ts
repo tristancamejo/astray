@@ -1,8 +1,8 @@
+import { Song } from '@astray/swrapper';
 import { play, stop } from 'fentio';
 import { MediaControl } from 'ktm';
 import { EventBus } from '../events/bus/EventBus';
 import { Library } from './Library';
-import { Song } from './Song';
 export interface RadioState {
 	song?: Song;
 	nextSongs: Song[];
@@ -50,7 +50,7 @@ export class Radio {
 			nextSongs: this.nextSongs,
 			isPlaying: !!this.sinkId,
 			progress: this.progress,
-			duration: this.playingSong?.duration || 0,
+			duration: this.playingSong?.computed.duration || 0,
 		};
 	}
 
@@ -71,10 +71,10 @@ export class Radio {
 
 	private updateNativeMediaControl() {
 		this.mediaControl.setMetadata({
-			album: this.playingSong?.album,
-			artist: this.playingSong?.artist,
-			duration: this.playingSong?.duration,
-			title: this.playingSong?.title,
+			album: this.playingSong?.metadata.album,
+			artist: this.playingSong?.metadata.artist,
+			duration: this.playingSong?.computed.duration,
+			title: this.playingSong?.metadata.title,
 		});
 		this.mediaControl.setState(!!this.sinkId ? 'playing' : 'paused', this.progress);
 	}
@@ -90,7 +90,7 @@ export class Radio {
 				return;
 			}
 
-			if (this.progress >= this.playingSong?.duration || !this.playingSong) {
+			if (this.progress >= this.playingSong?.computed.duration || !this.playingSong) {
 				this.next();
 				return;
 			}
@@ -153,7 +153,7 @@ export class Radio {
 
 		const song = this.nextSongs.shift();
 		if (!song) return;
-		this.play(song.id);
+		this.play(song.uniqueHash);
 	}
 
 	private populateNextSongs() {

@@ -1,14 +1,15 @@
 import 'reflect-metadata';
 import { container } from 'tsyringe';
 
+import { createServer } from '@astray/server';
 import { app, BrowserWindow } from 'electron';
 import serve from 'electron-serve';
+import { createServerLibraryAdapter } from './adapters/library-adapter';
 import { Configuration } from './config/Config';
 import { EventBus } from './events/bus/EventBus';
 import { createWindow } from './helpers';
 import { Library } from './radio/Library';
 import { Radio } from './radio/Radio';
-
 export let mainWindow: BrowserWindow;
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -36,6 +37,10 @@ if (isProd) {
 		webPreferences: {
 			nodeIntegration: true,
 		},
+	});
+
+	createServer({
+		library: createServerLibraryAdapter(container.resolve(Library)),
 	});
 
 	if (isProd) {

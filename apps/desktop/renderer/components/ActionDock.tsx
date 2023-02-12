@@ -68,8 +68,8 @@ export const ActionDock: React.FC = () => {
 					className={styles.actionDock__songInfo__cover}
 				/>
 				<div className={styles.actionDock__songInfo__text}>
-					<p className={styles.actionDock__songInfo__text__title}>{radioState.song.title}</p>
-					<p className={styles.actionDock__songInfo__text__artist}>{radioState.song.artist}</p>
+					<p className={styles.actionDock__songInfo__text__title}>{radioState.song.metadata.title}</p>
+					<p className={styles.actionDock__songInfo__text__artist}>{radioState.song.metadata.artist}</p>
 				</div>
 			</div>
 			<div className={styles.actionDock__controls}>

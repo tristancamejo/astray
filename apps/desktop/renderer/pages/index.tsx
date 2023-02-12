@@ -1,15 +1,15 @@
+import type { SerializedSong } from '@astray/swrapper';
 import * as Mui from '@mui/material';
 import { ipcRenderer } from 'electron';
 import React, { useEffect } from 'react';
-import { SongData } from '../../main/radio/Song';
 
 function Home() {
-	const [lib, setLib] = React.useState<SongData[]>([]);
+	const [lib, setLib] = React.useState<SerializedSong[]>([]);
 	const [search, setSearch] = React.useState<string>('');
-	const [searchResults, setSearchResults] = React.useState<SongData[]>([]);
+	const [searchResults, setSearchResults] = React.useState<SerializedSong[]>([]);
 
 	useEffect(() => {
-		const handler = (_, songs: SongData[]) => {
+		const handler = (_, songs: SerializedSong[]) => {
 			setLib(songs);
 		};
 
@@ -27,14 +27,14 @@ function Home() {
 
 	useEffect(() => {
 		const results = lib.filter((song) => {
-			return song.title.toLowerCase().includes(search.toLowerCase());
+			return song.metadata.title.toLowerCase().includes(search.toLowerCase());
 		});
 
 		setSearchResults(results);
 	}, [search, lib]);
 
-	const handleClick = (song: SongData) => {
-		ipcRenderer.send('radio:play', song.id);
+	const handleClick = (song: SerializedSong) => {
+		ipcRenderer.send('radio:play', song.uniqueHash);
 	};
 
 	return (
@@ -44,8 +44,8 @@ function Home() {
 			<Mui.Box sx={{ maxHeight: 400, overflow: 'auto' }}>
 				<Mui.List>
 					{searchResults.map((song) => (
-						<Mui.ListItemButton key={song.id} onClick={() => handleClick(song)}>
-							<Mui.ListItemText primary={song.title} secondary={song.artist} />
+						<Mui.ListItemButton key={song.metadata.title} onClick={() => handleClick(song)}>
+							<Mui.ListItemText primary={song.metadata.title} secondary={song.metadata.artist} />
 						</Mui.ListItemButton>
 					))}
 				</Mui.List>

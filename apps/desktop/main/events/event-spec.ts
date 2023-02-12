@@ -1,6 +1,6 @@
+import { Song } from '@astray/swrapper';
 import { ConfigSpec } from '../config/_spec';
 import { RadioState } from '../radio/Radio';
-import { Song } from '../radio/Song';
 
 export type EventSpec = {
 	start: [];

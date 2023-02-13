@@ -1,25 +1,28 @@
-# astray
+<div align="center">
+	<br />
+	<p>
+		<img src="./.github/astray.svg" alt="astray" width="200" style="border-radius: 50%" />
+	</p>
+    <h3>
+        astray 🎵
+    </h3>
+    <p>
+        a music player that <i>astrays</i> from the rest.
+    </p>
+	<br />
+	<p>
+    	<a href="https://github.com/twisttaan/astray/actions/workflows/checks.yml"><img src="https://github.com/twisttaan/astray/actions/workflows/checks.yml/badge.svg" alt="Tests status" /></a>
+    </p>
+</div>
 
-open-source music player that astrays from the rest.
+###### what is astray?
 
-## philosophy
+Astray is a decentralized home hosted music player. It is a desktop and mobile application that allows you to stream/download music from Astray sources.
 
-Astray was born out of the frustration of not being able to synchronize music between devices seamlessly. As a music player, its goal is to provide a simple, intuitive, and efficient solution to managing your music library across multiple devices. Whether you're at the gym, in the car, or at home, Astray makes it easy to access your favorite tracks, playlists, and podcasts without skipping a beat. With Astray, you'll never have to worry about manually transferring files or losing your music library again.
+###### what is a source?
 
-## plans
+An Astray source is a device running the Astray desktop app with the integrated server enabled or a server running the standalone Astray server.
 
-* desktop client talks to mobile client and allows for library sharing for on the go music 👀👀
-* and more!
+###### what is a source relay?
 
-## contributing
-
-contributing to this project is fun and easy (no secrets, woo)
-
-1. get source on computer using git
-2. run yarn
-3. run yarn build ( native modules )
-4. run yarn dev
-5. code
-6. pr
-
-note modifying native modules require restarting the electron app. (hmr doesn't count1!1)
+A source relay is a server that relays the library of multiple sources to a single Astray source. We plan to implement an official source relay of trusted sources in the future.

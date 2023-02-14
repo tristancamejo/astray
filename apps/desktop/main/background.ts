@@ -39,9 +39,15 @@ if (isProd) {
 		},
 	});
 
-	createServer({
-		library: createServerLibraryAdapter(container.resolve(Library)),
-	});
+	const settings = await container.resolve(Configuration).getSettings();
+
+	if (settings.runServer) {
+		container.register('killServerFunc', {
+			useValue: createServer({
+				library: createServerLibraryAdapter(),
+			}),
+		});
+	}
 
 	if (isProd) {
 		await mainWindow.loadURL('app://./index.html');

@@ -5,6 +5,9 @@ export interface ServerDependencies {
 	library: ILibrary;
 }
 
+/**
+ * @returns Function to close the server.
+ */
 export function createServer({ library }: ServerDependencies) {
 	const wss = new WebSocketServer({ port: 9999 });
 
@@ -46,7 +49,9 @@ export function createServer({ library }: ServerDependencies) {
 				);
 			}
 		});
-
-		ws.send('welcome to the work in progress astray wss!');
 	});
+
+	return () => {
+		wss.close();
+	};
 }

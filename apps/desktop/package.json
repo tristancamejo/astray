@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@astray/server": "workspace:^",
 		"@astray/swrapper": "workspace:^",
+		"@astray/swrapper-node": "workspace:^",
 		"@heroicons/react": "^2.0.15",
 		"@vladfrangu/async_event_emitter": "^2.1.3",
 		"autoprefixer": "^10.4.13",

@@ -1,0 +1,10 @@
+{
+	"private": true,
+	"name": "@astray/standalone-server",
+	"version": "0.0.0",
+	"type": "module",
+	"dependencies": {
+		"@astray/server": "workspace:^",
+		"@astray/swrapper": "workspace:^"
+	}
+}

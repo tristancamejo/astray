@@ -1,6 +1,6 @@
+import { packageSong } from '@astray/swrapper-node';
 import { WebSocketServer } from 'ws';
 import type { ILibrary } from './ILibrary';
-
 export interface ServerDependencies {
 	library: ILibrary;
 }
@@ -38,7 +38,7 @@ export function createServer({ library }: ServerDependencies) {
 					return;
 				}
 
-				const packaged = await song.package();
+				const packaged = await packageSong(song);
 
 				ws.send(packaged, { binary: true });
 			} else {

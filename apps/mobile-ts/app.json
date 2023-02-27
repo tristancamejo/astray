@@ -1,0 +1,22 @@
+{
+	"expo": {
+		"scheme": "acme",
+		"web": {
+			"bundler": "metro"
+		},
+		"name": "mobile-ts",
+		"slug": "mobile-ts",
+		"icon": "assets/icon.png",
+		"ios": {
+			"bundleIdentifier": "pw.evie.astray",
+			"infoPlist": {
+				"UIBackgroundModes": ["audio"]
+			}
+		},
+		"extra": {
+			"eas": {
+				"projectId": "ab381ae3-252a-4ad0-a6b0-70cb2719c9ec"
+			}
+		}
+	}
+}

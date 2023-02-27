@@ -1,5 +1,5 @@
 {
-	"name": "@astray/server",
+	"name": "@astray/swrapper-rn",
 	"version": "0.0.0",
 	"main": "./dist/index.js",
 	"source": "./src/index.ts",
@@ -14,7 +14,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.13.0",
-		"@types/ws": "^8.5.4",
+		"@types/pako": "^2",
+		"@types/text-encoding": "^0.0.36",
 		"eslint": "8.34.0",
 		"eslint-config-custom": "workspace:^",
 		"tsconfig": "workspace:^",
@@ -23,7 +24,8 @@
 	},
 	"dependencies": {
 		"@astray/swrapper": "workspace:^",
-		"@astray/swrapper-node": "workspace:^",
-		"ws": "^8.12.0"
+		"expo-crypto": "^12.0.0",
+		"pako": "^2.1.0",
+		"text-encoding": "^0.7.0"
 	}
 }

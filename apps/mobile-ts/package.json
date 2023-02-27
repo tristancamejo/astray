@@ -8,6 +8,7 @@
 	"dependencies": {
 		"@astray/swrapper": "workspace:^",
 		"@astray/swrapper-rn": "workspace:^",
+		"@expo/vector-icons": "^13.0.0",
 		"@types/react-native": "~0.70.6",
 		"expo": "~47.0.12",
 		"expo-constants": "~14.0.2",

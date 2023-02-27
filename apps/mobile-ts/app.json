@@ -9,6 +9,9 @@
 		"icon": "assets/icon.png",
 		"ios": {
 			"bundleIdentifier": "pw.evie.astray",
+			"config": {
+				"usesNonExemptEncryption": false
+			},
 			"infoPlist": {
 				"UIBackgroundModes": ["audio"]
 			}

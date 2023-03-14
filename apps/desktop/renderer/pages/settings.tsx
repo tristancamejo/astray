@@ -1,4 +1,4 @@
-import { FolderOpenIcon, TrashIcon } from '@heroicons/react/24/solid';
+import { FolderIcon, FolderOpenIcon, TrashIcon } from '@heroicons/react/24/solid';
 import * as Mui from '@mui/material';
 import { ipcRenderer } from 'electron';
 import React, { useEffect } from 'react';
@@ -60,6 +60,16 @@ function Settings() {
 								>
 									<Mui.Icon>
 										<TrashIcon />
+									</Mui.Icon>
+								</Mui.IconButton>
+								<Mui.IconButton
+									edge="end"
+									onClick={() => {
+										ipcRenderer.send('folder:open', source);
+									}}
+								>
+									<Mui.Icon>
+										<FolderIcon />
 									</Mui.Icon>
 								</Mui.IconButton>
 							</Mui.ListItemSecondaryAction>

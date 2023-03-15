@@ -10925,6 +10925,7 @@ __metadata:
     react-native-screens: ~3.18.0
     react-native-track-player: ^3.2.0
     react-native-web: ~0.18.7
+    zustand: ^4.3.6
   languageName: unknown
   linkType: soft
 
@@ -14945,7 +14946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
@@ -15514,5 +15515,22 @@ __metadata:
   version: 3.20.6
   resolution: "zod@npm:3.20.6"
   checksum: 804b1934b8b5e2fa3750bec90043e8118b201f330b9957b8b768389a971acadf812d2060cf62921086512dab4af691d10490acb03333da58fc485c0791893c89
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.3.6":
+  version: 4.3.6
+  resolution: "zustand@npm:4.3.6"
+  dependencies:
+    use-sync-external-store: 1.2.0
+  peerDependencies:
+    immer: ">=9.0"
+    react: ">=16.8"
+  peerDependenciesMeta:
+    immer:
+      optional: true
+    react:
+      optional: true
+  checksum: 4d3cec03526f04ff3de6dc45b6f038c47f091836af9660fbf5f682cae1628221102882df20e4048dfe699a43f67424e5d6afc1116f3838a80eea5dd4f95ddaed
   languageName: node
   linkType: hard

@@ -1,7 +1,6 @@
 import { Song } from '@astray/swrapper';
 import { unpackage } from '@astray/swrapper-rn';
 import * as FileSystem from 'expo-file-system';
-import TrackPlayer from 'react-native-track-player';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
@@ -27,18 +26,6 @@ export const useLibraryStore = create<LibraryState>()(
 						await FileSystem.writeAsStringAsync(fileUri, song.buffer.toString('base64'), {
 							encoding: FileSystem.EncodingType.Base64,
 						});
-
-						// Add a track to the queue
-						await TrackPlayer.add({
-							id: song.uniqueHash,
-							url: fileUri,
-							title: song.metadata.title,
-							artist: song.metadata.artist,
-							album: song.metadata.album,
-						});
-
-						// Start playing it
-						await TrackPlayer.play();
 
 						song.buffer = undefined;
 						song.path = fileUri;
